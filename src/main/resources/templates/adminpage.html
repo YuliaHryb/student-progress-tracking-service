@@ -1,0 +1,137 @@
+<<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кабинет администратора</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+    .container {
+      margin-top: 20px;
+    }
+    .sidebar {
+      height: 100vh;
+      background-color: #f8f9fa;
+      padding: 20px;
+      border-right: 1px solid #dee2e6;
+    }
+    .content {
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 sidebar">
+      <h4>Меню</h4>
+      <button class="btn btn-primary btn-block" onclick="showForm('addStudent')">Добавить студента</button>
+      <button class="btn btn-primary btn-block" onclick="showForm('addCourse')">Добавить курс</button>
+      <button class="btn btn-primary btn-block" onclick="showForm('setGrades')">Выставить баллы</button>
+      <button class="btn btn-primary btn-block" onclick="showForm('allStudents')">Все студенты</button>
+    </div>
+    <div class="col-md-9 content" id="mainContent">
+      <h4>Выберите действие</h4>
+      <div id="formContainer"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showForm(formType) {
+    let formContent = '';
+    if (formType === 'addStudent') {
+      formContent = `
+                <h4>Добавить студента</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="studentId">Личный номер:</label>
+                        <input type="text" class="form-control" id="studentId" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentName">ФИО:</label>
+                        <input type="text" class="form-control" id="studentName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="faculty">Факультет:</label>
+                        <input type="text" class="form-control" id="faculty" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="course">Курс:</label>
+                        <input type="number" class="form-control" id="course" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Добавить</button>
+                </form>
+            `;
+    } else if (formType === 'addCourse') {
+      formContent = `
+                <h4>Добавить курс</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="faculty">Факультет:</label>
+                        <input type="text" class="form-control" id="faculty" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseName">Название курса:</label>
+                        <input type="text" class="form-control" id="courseName" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Добавить</button>
+                </form>
+            `;
+    } else if (formType === 'setGrades') {
+      formContent = `
+                <h4>Выставить баллы</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="studentId">Личный номер студента:</label>
+                        <input type="text" class="form-control" id="studentId" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="grades">Предметы:</label>
+                        <input type="text" class="form-control" id="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="grades">Баллы:</label>
+                        <input type="number" class="form-control" id="grades" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Выставить</button>
+                </form>
+            `;
+    } else if (formType === 'allStudents') {
+      formContent = `
+                <h4>Все студенты</h4>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Личный номер</th>
+                            <th>ФИО</th>
+                            <th>Факультет</th>
+                            <th>Курс</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>12345</td>
+                            <td>Иванов Иван Иванович</td>
+                            <td>Факультет информатики</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>67890</td>
+                            <td>Петров Петр Петрович</td>
+                            <td>Факультет экономики</td>
+                            <td>3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            `;
+    }
+    document.getElementById('formContainer').innerHTML = formContent;
+  }
+</script>
+</body>
+</html>

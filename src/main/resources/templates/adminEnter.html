@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход администратора</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa; /* Серый фон */
+    }
+    .login-container {
+      margin-top: 100px;
+    }
+    .btn-yellow {
+      background-color: #ffc107; /* Желтый цвет */
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container login-container">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <h2 class="text-center">Вход для администратора</h2>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="username">Имя пользователя</label>
+          <input type="text" class="form-control" id="username" placeholder="Введите имя пользователя" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Пароль</label>
+          <input type="password" class="form-control" id="password" placeholder="Введите пароль" required>
+        </div>
+        <div class="alert alert-danger d-none" id="error-message" role="alert">
+          Имя пользователя не найдено.
+        </div>
+        <button type="submit" class="btn btn-yellow btn-block">Войти</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    // Здесь должна быть логика проверки имени пользователя и пароля
+    // Например, запрос к серверу для проверки существования пользователя
+
+    if (username !== "admin") { // Предположим, что только "admin" существует
+      document.getElementById('error-message').classList.remove('d-none');
+    } else {
+      document.getElementById('error-message').classList.add('d-none');
+      // Здесь перенаправление на другую страницу после успешного входа
+      alert("Вход успешен!"); // Замените на логику входа
+    }
+  });
+</script>
+
+</body>
+</html>
