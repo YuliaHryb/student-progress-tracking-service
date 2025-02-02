@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form th:action="@{/account/reg}" th:object="${newAccount}" method="post">
+      <input type="text" th:field="*{name}" placeholder="Name">
+      <input type="text" th:field="*{username}" placeholder="Username">
+      <input type="password" th:field="*{password}" placeholder="Password">
+      <button>Регистрация</button>
+    </form>
+</body>
+</html>

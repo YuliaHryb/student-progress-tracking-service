@@ -1,7 +1,10 @@
 package by.tms.studentprogresstrackingservice.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
+@Entity
+@Data
 @Table(name = "grades")
 public class Grade {
     @Id
@@ -15,3 +18,4 @@ public class Grade {
     private Course course;
     private Double grade;
 }
+
